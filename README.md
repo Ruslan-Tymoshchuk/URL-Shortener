@@ -1,0 +1,1 @@
+URL-Shortener allows you to reduce long links from Instagram, Facebook, YouTube, LinkedIn, etc. 
