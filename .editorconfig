@@ -11,3 +11,5 @@ trim_trailing_whitespace = true
 indent_size = 4
 [*.xml]
 indent_size = 2
+[*.html]
+indent_size = 2

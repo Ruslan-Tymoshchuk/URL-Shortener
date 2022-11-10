@@ -6,6 +6,8 @@ public interface ShortenerService {
 
     UrlDto shortenTheUrl(UrlDto url) throws ServiceException;
     
-    String findByShortenUrl(String shortenUrl) throws ServiceException;
+    String findByShortenedUrl(String shortenUrl) throws ServiceException;
+    
+    Integer getTimesFollowedByLink(String shortenUrl) throws ServiceException;
     
 }

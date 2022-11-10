@@ -23,6 +23,7 @@ public class ShortenerServiceImpl implements ShortenerService {
         this.urlRepository = urlRepository;
     }
 
+    @Override
     @Transactional
     public UrlDto shortenTheUrl(UrlDto url) throws ServiceException {
         logger.debug("shortening the url");
@@ -42,8 +43,9 @@ public class ShortenerServiceImpl implements ShortenerService {
         return url;
     }
 
+    @Override
     @Transactional
-    public String findByShortenUrl(String shortenUrl) throws ServiceException {
+    public String findByShortenedUrl(String shortenUrl) throws ServiceException {
         logger.debug("Find by shorten url = {}", shortenUrl);
         try {
             Url url = urlRepository.findByShortenUrl(shortenUrl)
@@ -51,6 +53,16 @@ public class ShortenerServiceImpl implements ShortenerService {
             url.setClicks(url.getClicks() + 1);
             return url.getOriginalUrl();
         } catch (DataAccessException | EntityNotFoundException e) {
+            throw new ServiceException("Repository error occurred", e);
+        }
+    }
+    
+    @Override
+    public Integer getTimesFollowedByLink(String shortenUrl) throws ServiceException {
+        try {
+        return urlRepository.findByShortenUrl(shortenUrl)
+                .orElseThrow(() -> new EntityNotFoundException("Error occurred when searching by shorten url")).getClicks();       
+        }catch (DataAccessException | EntityNotFoundException e) {
             throw new ServiceException("Repository error occurred", e);
         }
     }
