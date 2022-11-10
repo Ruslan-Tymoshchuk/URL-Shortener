@@ -18,8 +18,8 @@ public class Url {
     @Column(name = "original_url")
     private String originalUrl;
     
-    @Column(name = "shorten_url")
-    private String shortenUrl;
+    @Column(name = "shortened_url")
+    private String shortenedUrl;
     
     @Column(name = "clicks")
     private Integer clicks;
@@ -41,11 +41,11 @@ public class Url {
     }
 
     public String getShortenUrl() {
-        return shortenUrl;
+        return shortenedUrl;
     }
 
     public void setShortenUrl(String shortenUrl) {
-        this.shortenUrl = shortenUrl;
+        this.shortenedUrl = shortenUrl;
     }
 
     public Integer getClicks() {

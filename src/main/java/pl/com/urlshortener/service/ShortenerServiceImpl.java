@@ -26,18 +26,18 @@ public class ShortenerServiceImpl implements ShortenerService {
     @Override
     @Transactional
     public UrlDto shortenTheUrl(UrlDto url) throws ServiceException {
-        logger.debug("shortening the url");
+        logger.debug("Shortening the url");
         try {
             Url urlEntity = new Url();
             urlEntity.setOriginalUrl(url.getOriginalUrl());
-            String shortenUrl = RandomStringUtils.randomAlphanumeric(5);
-            urlEntity.setShortenUrl(shortenUrl);
+            String shortenedUrl = RandomStringUtils.randomAlphanumeric(5);
+            urlEntity.setShortenUrl(shortenedUrl);
             urlEntity.setClicks(0);
             urlEntity = urlRepository.save(urlEntity);
             url.setOriginalUrl(urlEntity.getOriginalUrl());
             url.setShortenUrl(urlEntity.getShortenUrl());
         } catch (DataAccessException e) {
-            logger.error("Getting all group failed");
+            logger.error("Shortening the url failed");
             throw new ServiceException("Repository error occured", e);
         }
         return url;
@@ -48,7 +48,7 @@ public class ShortenerServiceImpl implements ShortenerService {
     public String findByShortenedUrl(String shortenUrl) throws ServiceException {
         logger.debug("Find by shorten url = {}", shortenUrl);
         try {
-            Url url = urlRepository.findByShortenUrl(shortenUrl)
+            Url url = urlRepository.findByShortenedUrl(shortenUrl)
                     .orElseThrow(() -> new EntityNotFoundException("Error occurred when searching by shorten url"));
             url.setClicks(url.getClicks() + 1);
             return url.getOriginalUrl();
@@ -58,9 +58,10 @@ public class ShortenerServiceImpl implements ShortenerService {
     }
     
     @Override
-    public Integer getTimesFollowedByLink(String shortenUrl) throws ServiceException {
+    public Integer getTimesFollowedByLink(String shortenedUrl) throws ServiceException {
+        logger.debug("Get times followed by linck = {}", shortenedUrl);
         try {
-        return urlRepository.findByShortenUrl(shortenUrl)
+        return urlRepository.findByShortenedUrl(shortenedUrl)
                 .orElseThrow(() -> new EntityNotFoundException("Error occurred when searching by shorten url")).getClicks();       
         }catch (DataAccessException | EntityNotFoundException e) {
             throw new ServiceException("Repository error occurred", e);

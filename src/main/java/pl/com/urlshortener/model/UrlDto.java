@@ -3,7 +3,7 @@ package pl.com.urlshortener.model;
 public class UrlDto {
 
     private String originalUrl;
-    private String shortenUrl;
+    private String shortenedUrl;
     private Integer clicks;
 
     public String getOriginalUrl() {
@@ -15,11 +15,11 @@ public class UrlDto {
     }
 
     public String getShortenUrl() {
-        return shortenUrl;
+        return shortenedUrl;
     }
 
     public void setShortenUrl(String shortenUrl) {
-        this.shortenUrl = shortenUrl;
+        this.shortenedUrl = shortenUrl;
     }
 
     public Integer getClicks() {

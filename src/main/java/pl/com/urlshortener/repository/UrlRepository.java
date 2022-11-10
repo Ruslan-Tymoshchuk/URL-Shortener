@@ -8,6 +8,6 @@ import pl.com.urlshortener.model.Url;
 @Repository
 public interface UrlRepository extends JpaRepository<Url, Integer> {
 
-    Optional<Url> findByShortenUrl(String shortenUrl);
+    Optional<Url> findByShortenedUrl(String shortenedUrl);
 
 }

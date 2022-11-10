@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>fragments</title>
+</head>
+
+<!-- Nav Bar -->
+<th:block th:fragment="navbar">
+  <nav class="navbar" style="background-color: #66ccff;">
+    <div class="container-md">
+      <a class="navbar-brand" href="/">Url-Shortener</a>
+      <div class="p-2 flex-shrink-1 bd-highlight"><a class="text-black" href="https://www.google.com/">Google
+          Search</a>
+        <a class="text-black" href="https://www.linkedin.com/">LinkedIn</a>
+      </div>
+    </div>
+  </nav>
+</th:block>
+
+<!-- Additional images -->
+<th:block th:fragment="additional-images">
+  <div class="row text-center fixed-bottom" style="margin-bottom: 150px;">
+    <div class="col"><img src="/images/java.png" alt="Java" class="img-fluid" style="width:40%"></div>
+    <div class="col"><img src="/images/spring.png" alt="Spring Boot" class="img-fluid" style="width:40%"></div>
+    <div class="col"><img src="/images/hibernate.png" alt="Hibernate" class="img-fluid" style="width:40%"></div>
+  </div>
+</th:block>
+
+<!-- Footer -->
+<th:block th:fragment="footer">
+  <footer class="text-center text-white fixed-bottom" style="background-color: #66ccff;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: CTA -->
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3">Use for easy surfing</span>
+        </p>
+      </section>
+      <!-- Section: CTA -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2022 Copyright:
+      <a class="text-white" href="https://www.linkedin.com/in/r~tim-15755t14r/">R~Tim Develop.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</th:block>
+
+</html>
