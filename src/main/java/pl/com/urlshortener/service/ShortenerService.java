@@ -4,10 +4,10 @@ import pl.com.urlshortener.model.UrlDto;
 
 public interface ShortenerService {
 
-    UrlDto shortenTheUrl(UrlDto url) throws ServiceException;
+    UrlDto shortenTheUrl(UrlDto url);
     
-    String findByShortenedUrl(String shortenUrl) throws ServiceException;
+    String findByShortenedUrl(String shortenUrl);
     
-    Integer getTimesFollowedByLink(String shortenUrl) throws ServiceException;
+    Integer getTimesFollowedByLink(String shortenUrl);
     
 }
