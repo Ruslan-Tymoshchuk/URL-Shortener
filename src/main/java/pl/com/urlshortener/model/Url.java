@@ -40,11 +40,11 @@ public class Url {
         this.originalUrl = originalUrl;
     }
 
-    public String getShortenUrl() {
+    public String getShortenedUrl() {
         return shortenedUrl;
     }
 
-    public void setShortenUrl(String shortenUrl) {
+    public void setShortenedUrl(String shortenUrl) {
         this.shortenedUrl = shortenUrl;
     }
 

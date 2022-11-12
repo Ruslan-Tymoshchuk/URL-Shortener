@@ -18,7 +18,7 @@ public class ShortenerServiceImpl implements ShortenerService {
     public static final Logger logger = LoggerFactory.getLogger(ShortenerServiceImpl.class);
 
     private final UrlRepository urlRepository;
-
+   
     public ShortenerServiceImpl(UrlRepository urlRepository) {
         this.urlRepository = urlRepository;
     }
@@ -31,11 +31,11 @@ public class ShortenerServiceImpl implements ShortenerService {
             Url urlEntity = new Url();
             urlEntity.setOriginalUrl(url.getOriginalUrl());
             String shortenedUrl = RandomStringUtils.randomAlphanumeric(5);
-            urlEntity.setShortenUrl(shortenedUrl);
+            urlEntity.setShortenedUrl(shortenedUrl);
             urlEntity.setClicks(0);
             urlEntity = urlRepository.save(urlEntity);
             url.setOriginalUrl(urlEntity.getOriginalUrl());
-            url.setShortenUrl(urlEntity.getShortenUrl());
+            url.setShortenedUrl(urlEntity.getShortenedUrl());
         } catch (DataAccessException e) {
             logger.error("Shortening the url failed");
             throw new ServiceException("Repository error occured", e);

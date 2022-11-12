@@ -23,11 +23,13 @@
             <form class="row mt-3" th:method="POST" th:action="@{/}" th:object="${urlDto}">
               <div class="col">
                 <input class="form-control" type="text" th:field="*{originalUrl}" id="originalUrl"
-                  placeholder="Enter the link here" required />
+                  placeholder="Enter the link here" />
               </div>
               <div class="col-auto">
                 <button type="submit" class="btn btn-outline-success">Shortenize</button>
               </div>
+              <div class="row-auto" style="color: red" th:if="${#fields.hasErrors('originalUrl')}"
+                th:errors="*{originalUrl}"></div>
             </form>
             <div class="row mt-3">
               <p>URL-Shortener tool build by R~Tim<br>
@@ -40,9 +42,9 @@
         </div>
       </div>
     </div>
-    
-  <th:block th:insert="fragments :: additional-images"></th:block>
-    
+
+    <th:block th:insert="fragments :: additional-images"></th:block>
+
     <!-- Clicks Modal -->
     <div class="modal fade" id="followed-times" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">

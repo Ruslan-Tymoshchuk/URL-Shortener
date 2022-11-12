@@ -1,7 +1,12 @@
 package pl.com.urlshortener.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class UrlDto {
 
+    @NotEmpty(message = "Original Url cannot be empty")
+    @Size(message = "Size must be between from 10 to 250 characters", min = 10, max = 250)
     private String originalUrl;
     private String shortenedUrl;
     private Integer clicks;
@@ -14,11 +19,11 @@ public class UrlDto {
         this.originalUrl = originalUrl;
     }
 
-    public String getShortenUrl() {
+    public String getShortenedUrl() {
         return shortenedUrl;
     }
 
-    public void setShortenUrl(String shortenUrl) {
+    public void setShortenedUrl(String shortenUrl) {
         this.shortenedUrl = shortenUrl;
     }
 
