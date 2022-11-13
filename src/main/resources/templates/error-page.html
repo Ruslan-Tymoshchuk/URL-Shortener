@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Something went wrong</title>
+  <link rel="icon" type="image/ico" href="/images/favicon.ico">
+</head>
+
+<body>
+  <h1> Some problem has occured:</h1>
+  <p th:text="${exception.getCause()}"></p>
+  <p th:text="${exception.getMessage()}"></p>
+</body>
+
+</html>

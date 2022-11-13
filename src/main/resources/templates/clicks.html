@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Clicks</title>
+  <link rel="icon" type="image/ico" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+  <th:block th:insert="fragments.html :: navbar"></th:block>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-8 mx-auto">
+        <div class="card border-info text-center">
+          <h2 class="card-header">Congrats!:) People followed by your link</h2>
+          <div class="card-body">
+            <h2>Amount clicks</h2>
+            <h1 th:text="${times}"></h1>
+          </div>
+          <div class="card-footer mt-4 text-muted">
+            <a href="/">
+              <h5> Create one more your shortened URL</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <th:block th:insert="fragments :: additional-images"></th:block>
+
+  <th:block th:insert="fragments :: footer"></th:block>
+
+</body>

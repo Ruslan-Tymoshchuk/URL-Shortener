@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Url-Shortener</title>
+  <link rel="icon" type="image/ico" href="/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.2/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/bootstrap/5.2.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <th:block th:insert="fragments.html :: navbar"></th:block>
+
+  <div class="container">
+
+    <div class="row mt-5">
+      <div class="col-md-8 mx-auto text-center">
+        <div class="card border-info">
+          <h2 class="card-header">Paste your URL to be shortened</h2>
+          <div class="card-body">
+            <form class="row mt-3" th:method="POST" th:action="@{/}" th:object="${urlDto}">
+              <div class="col">
+                <input class="form-control" type="text" th:field="*{originalUrl}" id="originalUrl"
+                  placeholder="Enter the link here" />
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-outline-success">Shortenize</button>
+              </div>
+              <div class="row-auto" style="color: red" th:if="${#fields.hasErrors('originalUrl')}"
+                th:errors="*{originalUrl}"></div>
+            </form>
+            <div class="row mt-3">
+              <p>URL-Shortener tool build by R~Tim<br>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#followed-times">Check for how many times follow by
+                  your link</a><br>
+                Use URL-Shortener to reduce your long link for easy to remember
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <th:block th:insert="fragments :: additional-images"></th:block>
+
+    <!-- Clicks Modal -->
+    <div class="modal fade" id="followed-times" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Check followed times</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form th:method="GET" th:action="@{/times}" class="row gy-3 gx-3 justify-content-center">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="shortened-url" placeholder="Shorten Url"
+                  name="shortened_url" required>
+                <label for="shortened-url">Provide please your Shortened Url:</label>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <th:block th:insert="fragments :: footer"></th:block>
+
+</body>
