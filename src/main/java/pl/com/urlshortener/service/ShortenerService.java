@@ -6,7 +6,7 @@ public interface ShortenerService {
 
     UrlDto shortenTheUrl(UrlDto url);
     
-    String findByShortenedUrl(String shortenUrl);
+    String findByShortenedUrl(String shortenedUrl);
     
     Integer getTimesFollowedByLink(String shortenUrl);
     
