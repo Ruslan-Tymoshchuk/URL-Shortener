@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  shortener:
+    image: url-shortener
+    build:
+      context: .
+    container_name: url-shortener
+    ports:
+      - "8080:8080"
+      
+networks:
+  shortener-net:
